@@ -8,11 +8,11 @@ on:
         # description: 'SSH connection to Actions'
         # required: false
         # default: 'false'
-  schedule:
-   - cron: 0 16 * * *
+ # schedule:
+ #  - cron: 0 16 * * *
 
 env:
-  REPO_URL: https://github.com/istoreos/istoreos
+  REPO_URL: https://github.com/kylin7226/istoreos
   # REPO_BRANCH: main
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: .config
@@ -215,17 +215,3 @@ jobs:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
-
-    - name: 删除运行记录
-      uses: xiaomeng9597/delete-workflow-runs@main
-      with:
-        retain_days: 20
-        keep_minimum_runs: 15
-        token: ${{ env.GITHUB_TOKEN }}
-
-    - name: 删除自动发布的旧固件
-      uses: dev-drprasad/delete-older-releases@v0.3.3
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 30
-        delete_tags: true

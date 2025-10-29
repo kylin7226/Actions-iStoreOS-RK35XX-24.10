@@ -3,13 +3,11 @@ name: Build iStore OS 6.x
 on:
   repository_dispatch:
   workflow_dispatch:
-    # inputs:
-      # ssh:
-        # description: 'SSH connection to Actions'
-        # required: false
-        # default: 'false'
-  schedule:
-   - cron: 0 16 * * *
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
 
 env:
   REPO_URL: https://github.com/istoreos/istoreos
@@ -30,13 +28,12 @@ jobs:
     strategy:
       matrix:
         REPO_BRANCH:
-          # - main
           - istoreos-24.10
-          # - istoreos-23.05
         ARCHITECTURE:
           - armv8
         os:
           - ubuntu-22.04
+        DEVICE_TARGET: [cyber_cyber3588-aib]
 
       fail-fast: false
 
@@ -188,7 +185,7 @@ jobs:
       id: tag
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.ARCHITECTURE }}" >> ${GITHUB_OUTPUT}
+        echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.DEVICE_TARGET }}" >> ${GITHUB_OUTPUT}
         touch release.txt
         echo "
         💻 架构: ${{ matrix.ARCHITECTURE }}

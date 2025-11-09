@@ -39,5 +39,7 @@ git clone --depth=1 -b main https://github.com/xiaomeng9597/istoreos-settings pa
 git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 
 # 修改默认LAN IP地址为192.168.199.1
-sed -i 's/192.168.100.1/192.168.199.1/g' package/base-files/luci2/bin/config_generate 2>/dev/null || true
-echo "✅ 默认LAN IP地址: 192.168.199.1" 
+sed -i 's/192.168.100.1/192.168.199.1/g' package/istoreos-files/Makefile
+
+# 启用rknpu
+sed -i '/define KernelPackage\/rknpu\/install/,/endef/d' package/kernel/rockchip-drivers/Makefile

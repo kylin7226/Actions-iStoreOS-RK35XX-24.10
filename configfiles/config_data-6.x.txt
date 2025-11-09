@@ -25,30 +25,139 @@ CONFIG_PACKAGE_luci-app-store=y
 CONFIG_PACKAGE_luci-app-eqosplus=y
 CONFIG_PACKAGE_luci-i18n-eqosplus-zh-cn=y
 # 禁用WiFi相关功能
-# CONFIG_PACKAGE_kmod-brcmfmac is not set
-# CONFIG_PACKAGE_kmod-brcmutil is not set
-# CONFIG_PACKAGE_kmod-iwlwifi is not set
-# CONFIG_PACKAGE_iwlwifi-firmware-ax101 is not set
-# CONFIG_PACKAGE_iwlwifi-firmware-ax200 is not set
-# CONFIG_PACKAGE_iwlwifi-firmware-ax201 is not set
-# CONFIG_PACKAGE_iwlwifi-firmware-ax210 is not set
-# CONFIG_PACKAGE_iwlwifi-firmware-ax211 is not set
-# CONFIG_PACKAGE_iwlwifi-firmware-ax411 is not set
-# CONFIG_PACKAGE_iwlwifi-firmware-be200 is not set
-# CONFIG_PACKAGE_kmod-rtl8192c-common is not set
-# CONFIG_PACKAGE_kmod-rtl8192cu is not set
-# CONFIG_PACKAGE_kmod-rtl8192d-common is not set
-# CONFIG_PACKAGE_kmod-rtl8192de is not set
-# CONFIG_PACKAGE_kmod-rtl8192se is not set
-# CONFIG_PACKAGE_kmod-rtl8821ae is not set
-# CONFIG_PACKAGE_kmod-rtl8xxxu is not set
-# CONFIG_PACKAGE_kmod-rtlwifi is not set
-# CONFIG_PACKAGE_kmod-rtlwifi-btcoexist is not set
-# CONFIG_PACKAGE_kmod-rtlwifi-pci is not set
-# CONFIG_PACKAGE_kmod-rtlwifi-usb is not set
-# CONFIG_PACKAGE_kmod-rtw88-* is not set
-# CONFIG_PACKAGE_kmod-rtw89-* is not set
-# CONFIG_PACKAGE_hostapd-openssl is not set
-# CONFIG_PACKAGE_wpa-cli is not set
-# CONFIG_PACKAGE_wpa-supplicant-openssl is not set
-# CONFIG_PACKAGE_wpad-basic-mbedtls is not set
+CONFIG_PACKAGE_kmod-brcmfmac=n
+CONFIG_PACKAGE_kmod-brcmutil=n
+CONFIG_PACKAGE_kmod-iwlwifi=n
+CONFIG_PACKAGE_iwlwifi-firmware-ax101=n
+CONFIG_PACKAGE_iwlwifi-firmware-ax200=n
+CONFIG_PACKAGE_iwlwifi-firmware-ax201=n
+CONFIG_PACKAGE_iwlwifi-firmware-ax210=n
+CONFIG_PACKAGE_iwlwifi-firmware-ax211=n
+CONFIG_PACKAGE_iwlwifi-firmware-ax411=n
+CONFIG_PACKAGE_iwlwifi-firmware-be200=n
+CONFIG_PACKAGE_kmod-rtl8192c-common=n
+CONFIG_PACKAGE_kmod-rtl8192cu=n
+CONFIG_PACKAGE_kmod-rtl8192d-common=n
+CONFIG_PACKAGE_kmod-rtl8192de=n
+CONFIG_PACKAGE_kmod-rtl8192se=n
+CONFIG_PACKAGE_kmod-rtl8821ae=n
+CONFIG_PACKAGE_kmod-rtl8xxxu=n
+CONFIG_PACKAGE_kmod-rtlwifi=n
+CONFIG_PACKAGE_kmod-rtlwifi-btcoexist=n
+CONFIG_PACKAGE_kmod-rtlwifi-pci=n
+CONFIG_PACKAGE_kmod-rtlwifi-usb=n
+CONFIG_PACKAGE_kmod-rtw88-=n
+CONFIG_PACKAGE_kmod-rtw89-=n
+CONFIG_PACKAGE_hostapd-openssl=n
+CONFIG_PACKAGE_wpa-cli=n
+CONFIG_PACKAGE_wpa-supplicant-openssl=n
+CONFIG_PACKAGE_wpad-basic-mbedtls=n
+# 禁用USB网络相关功能
+CONFIG_PACKAGE_kmod-usb-net-cdc-ether=n
+CONFIG_PACKAGE_kmod-usb-net-cdc-eem=n
+CONFIG_PACKAGE_kmod-usb-net-cdc-mbim=n
+CONFIG_PACKAGE_kmod-usb-net-cdc-ncm=n
+CONFIG_PACKAGE_kmod-usb-net-cdc-subset=n
+CONFIG_PACKAGE_kmod-usb-net-huawei-cdc-ncm=n
+CONFIG_PACKAGE_kmod-usb-net-rndis=n
+# 其他被禁用的功能
+CONFIG_PACKAGE_brcmfmac-nvram-4356-sdio=n
+CONFIG_PACKAGE_cypress-firmware-4356-sdio=n
+CONFIG_PACKAGE_kmod-aic8800s=n
+CONFIG_PACKAGE_kmod-rtw88-8723ds=n
+CONFIG_PACKAGE_kmod-rtw88-sdio=n
+CONFIG_PACKAGE_kmod-mac80211=n
+# 禁用的设备配置
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_armsom_sige7=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_firefly_roc-rk3328-cc=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopc-t4=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopc-t6=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r2c=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r2c-plus=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r4s-enterprise=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r5c=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r6c=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_hinlink_hnas=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_pine64_rock64=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_pine64_rockpro64=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_cm3-io=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_e25=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-3a=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-3b=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-3c=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-5a=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-5b=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-pi-4a=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-pi-e=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-pi-e-v3=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-pi-s=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_zero-3e=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_zero-3w=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_sinovoip_bpi-r2-pro=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_xunlong_orangepi-r1-plus=n
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_xunlong_orangepi-r1-plus-lts=n
+# 禁用MT76系列WiFi驱动
+CONFIG_PACKAGE_kmod-mt76-connac=n
+CONFIG_PACKAGE_kmod-mt76-core=n
+CONFIG_PACKAGE_kmod-mt76-usb=n
+CONFIG_PACKAGE_kmod-mt7615-common=n
+CONFIG_PACKAGE_kmod-mt7615-firmware=n
+CONFIG_PACKAGE_kmod-mt7615e=n
+CONFIG_PACKAGE_kmod-mt7622-firmware=n
+CONFIG_PACKAGE_kmod-mt7663-firmware-ap=n
+CONFIG_PACKAGE_kmod-mt7663-usb-sdio=n
+CONFIG_PACKAGE_kmod-mt7663u=n
+CONFIG_PACKAGE_kmod-mt76x0-common=n
+CONFIG_PACKAGE_kmod-mt76x02-common=n
+CONFIG_PACKAGE_kmod-mt76x02-usb=n
+CONFIG_PACKAGE_kmod-mt76x0u=n
+CONFIG_PACKAGE_kmod-mt76x2-common=n
+CONFIG_PACKAGE_kmod-mt76x2u=n
+CONFIG_PACKAGE_kmod-mt7915-firmware=n
+CONFIG_PACKAGE_kmod-mt7915e=n
+CONFIG_PACKAGE_kmod-mt7916-firmware=n
+CONFIG_PACKAGE_kmod-mt7921-common=n
+CONFIG_PACKAGE_kmod-mt7921-firmware=n
+CONFIG_PACKAGE_kmod-mt7921e=n
+CONFIG_PACKAGE_kmod-mt7921u=n
+CONFIG_PACKAGE_kmod-mt7922-firmware=n
+CONFIG_PACKAGE_kmod-mt7925-common=n
+CONFIG_PACKAGE_kmod-mt7925-firmware=n
+CONFIG_PACKAGE_kmod-mt7925e=n
+CONFIG_PACKAGE_kmod-mt7925u=n
+CONFIG_PACKAGE_kmod-mt792x-common=n
+CONFIG_PACKAGE_kmod-mt792x-usb=n
+CONFIG_PACKAGE_kmod-mt7992-23-firmware=n
+CONFIG_PACKAGE_kmod-mt7992-firmware=n
+CONFIG_PACKAGE_kmod-mt7996-233-firmware=n
+CONFIG_PACKAGE_kmod-mt7996-firmware=n
+CONFIG_PACKAGE_kmod-mt7996-firmware-common=n
+CONFIG_PACKAGE_kmod-mt7996e=n
+CONFIG_PACKAGE_kmod-mtk-t7xx=n
+CONFIG_PACKAGE_kmod-mwifiex-pcie=n
+# 禁用RTW系列WiFi驱动
+CONFIG_PACKAGE_kmod-rtw88-8723d=n
+CONFIG_PACKAGE_kmod-rtw88-8723de=n
+CONFIG_PACKAGE_kmod-rtw88-8723du=n
+CONFIG_PACKAGE_kmod-rtw88-8723x=n
+CONFIG_PACKAGE_kmod-rtw88-8812a=n
+CONFIG_PACKAGE_kmod-rtw88-8812au=n
+CONFIG_PACKAGE_kmod-rtw88-8821a=n
+CONFIG_PACKAGE_kmod-rtw88-8821au=n
+CONFIG_PACKAGE_kmod-rtw88-8821c=n
+CONFIG_PACKAGE_kmod-rtw88-8821ce=n
+CONFIG_PACKAGE_kmod-rtw88-8821cu=n
+CONFIG_PACKAGE_kmod-rtw88-8822b=n
+CONFIG_PACKAGE_kmod-rtw88-8822be=n
+CONFIG_PACKAGE_kmod-rtw88-8822bu=n
+CONFIG_PACKAGE_kmod-rtw88-8822cu=n
+CONFIG_PACKAGE_kmod-rtw88-88xxa=n
+CONFIG_PACKAGE_kmod-rtw88-usb=n
+CONFIG_PACKAGE_kmod-rtw89=n
+CONFIG_PACKAGE_kmod-rtw89-8851be=n
+CONFIG_PACKAGE_kmod-rtw89-8852ae=n
+CONFIG_PACKAGE_kmod-rtw89-8852b-common=n
+CONFIG_PACKAGE_kmod-rtw89-8852be=n
+CONFIG_PACKAGE_kmod-rtw89-8852ce=n
+CONFIG_PACKAGE_kmod-rtw89-8922ae=n
+CONFIG_PACKAGE_kmod-rtw89-pci=n

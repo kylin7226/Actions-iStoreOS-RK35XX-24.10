@@ -17,7 +17,7 @@ cp -a $GITHUB_WORKSPACE/configfiles/etc/* package/base-files/files/etc/
 # ls package/base-files/files/etc/
 
 
-# 追加binder内核参数
+# 追加内核参数（PSI压力监测、KPROBES内核探针）
 echo "CONFIG_PSI=y
 CONFIG_KPROBES=y" >> target/linux/rockchip/armv8/config-6.6
 

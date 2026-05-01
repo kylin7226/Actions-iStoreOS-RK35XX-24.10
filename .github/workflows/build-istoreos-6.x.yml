@@ -3,13 +3,11 @@ name: Build iStore OS 6.x
 on:
   repository_dispatch:
   workflow_dispatch:
-    # inputs:
-      # ssh:
-        # description: 'SSH connection to Actions'
-        # required: false
-        # default: 'false'
-  schedule:
-   - cron: 0 16 * * *
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
 
 env:
   REPO_URL: https://github.com/istoreos/istoreos
@@ -37,6 +35,7 @@ jobs:
           - armv8
         os:
           - ubuntu-22.04
+        DEVICE_TARGET: [cyber_cyber3588-aib]
 
       fail-fast: false
 
@@ -55,7 +54,7 @@ jobs:
       run: |
         mkdir -p ${GITHUB_WORKSPACE}/workdir
         chmod 755 ${GITHUB_WORKSPACE}/workdir
-        echo "WORKDIR_PATH=$PWD" >> $GITHUB_ENV
+        echo "WORKDIR=$PWD" >> $GITHUB_ENV
 
     - name: 检查服务器配置
       run: |
@@ -85,7 +84,7 @@ jobs:
         sudo rm -rf get-pip.py
         sudo pip install pyelftools
         echo "------------------------------- 清理Docker镜像和软件 -------------------------------"
-        [ -n "$(docker images -q)" ] && docker rmi $(docker images -q)
+        docker rmi `docker images -q`
         docker image prune -a -f
         sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* android* || true
         sudo -E apt-get -qq autoremove --purge
@@ -94,11 +93,11 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
 
     - name: 克隆源码
-      working-directory: ${{ env.WORKDIR_PATH }}/workdir
+      working-directory: ${{ env.WORKDIR }}/workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b ${{ matrix.REPO_BRANCH }} openwrt
-        ln -sf ${{ env.WORKDIR_PATH }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf ${{ env.WORKDIR }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 缓存构建动作
       uses: klever1988/cachewrtbuild@main
@@ -132,12 +131,12 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-    # - name: SSH 连接到 Actions
-      # uses: P3TERX/ssh2actions@main
-      # if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      # env:
-        # TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        # TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+    - name: SSH 连接到 Actions
+      uses: P3TERX/ssh2actions@main
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: 下载软件包
       id: package
@@ -188,7 +187,7 @@ jobs:
       id: tag
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.ARCHITECTURE }}" >> ${GITHUB_OUTPUT}
+        echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.DEVICE_TARGET }}" >> ${GITHUB_OUTPUT}
         touch release.txt
         echo "
         💻 架构: ${{ matrix.ARCHITECTURE }}
@@ -199,7 +198,7 @@ jobs:
 
         ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
 
-        🌐 管理地址: 192.168.100.1
+        🌐 管理地址: 192.168.199.1
 
         👤 用户名: root
 
@@ -215,17 +214,3 @@ jobs:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
-
-    - name: 删除运行记录
-      uses: xiaomeng9597/delete-workflow-runs@main
-      with:
-        retain_days: 20
-        keep_minimum_runs: 15
-        token: ${{ env.GITHUB_TOKEN }}
-
-    - name: 删除自动发布的旧固件
-      uses: dev-drprasad/delete-older-releases@v0.3.3
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 60
-        delete_tags: true

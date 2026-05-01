@@ -44,10 +44,3 @@ jobs:
         exclude_assets: ''
         keep_files: true
         commit_message: "Sync files"
-
-    - name: 删除运行记录
-      uses: xiaomeng9597/delete-workflow-runs@main
-      with:
-        retain_days: 20
-        keep_minimum_runs: 15
-        token: ${{ secrets.ACCESS_TOKEN }}

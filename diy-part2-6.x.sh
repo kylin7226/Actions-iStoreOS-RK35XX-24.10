@@ -37,9 +37,6 @@ git clone --depth=1 -b main https://github.com/xiaomeng9597/istoreos-settings pa
 # 定时限速插件
 git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 
-# 集成ddns-go
-git clone --depth=1 https://github.com/sirpdboy/luci-app-ddns-go package/ddns-go
-
 # 修改默认LAN IP地址为192.168.199.1
 sed -i 's/192.168.100.1/192.168.199.1/g' package/istoreos-files/Makefile
 

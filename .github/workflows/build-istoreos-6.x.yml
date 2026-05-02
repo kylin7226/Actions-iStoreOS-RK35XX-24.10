@@ -127,6 +127,13 @@ jobs:
         rm -rf feeds/packages/utils/v2dat feeds/packages/lang/golang
         # 替换为 kenzo 的 golang 1.26
         git clone --depth=1 https://github.com/kenzok8/golang -b 1.26 feeds/packages/lang/golang
+        # 删除依赖缺失的 feeds 包
+        rm -rf feeds/third_party/luci-app-LingTiGameAcc feeds/third_party/LingTiGameAcc
+        rm -rf feeds/kenzo/luci-theme-alpha
+        rm -rf feeds/packages/net/onionshare-cli
+        rm -rf feeds/packages/lang/python-pika feeds/packages/lang/python-zope-event feeds/packages/lang/python-zope-interface
+        rm -rf feeds/kenzo/smartdns feeds/kenzo/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
+        rm -rf feeds/kenzo/luci-app-fchomo feeds/kenzo/fchomo
 
     - name: 安装 feeds
       run: cd openwrt && ./scripts/feeds install -a

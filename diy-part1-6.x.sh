@@ -7,6 +7,10 @@
 # Blog: https://p3terx.com
 #===============================================
 
+# 添加 kenzo 和 small 源（kenzok8 推荐方式）
+sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+
 # 修复系统kernel内核md5校验码不正确的问题
 # https://mirrors.ustc.edu.cn/openwrt/releases/24.10.2/targets/rockchip/armv8/kmods/
 # https://downloads.openwrt.org/releases/24.10.2/targets/rockchip/armv8/kmods/

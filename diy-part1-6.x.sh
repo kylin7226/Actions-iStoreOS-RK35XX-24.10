@@ -12,13 +12,13 @@ sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf
 sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 # 修复系统kernel内核md5校验码不正确的问题
+# https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/24.10.2/targets/rockchip/armv8/kmods/
 # https://mirrors.ustc.edu.cn/openwrt/releases/24.10.2/targets/rockchip/armv8/kmods/
 # https://downloads.openwrt.org/releases/24.10.2/targets/rockchip/armv8/kmods/
 # https://archive.openwrt.org/releases/24.10.2/targets/rockchip/armv8/kmods/
 # https://mirrors.cqupt.edu.cn/openwrt/releases/24.10.2/targets/rockchip/armv8/kmods/
-# https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/24.10.2/targets/rockchip/armv8/kmods/
 Releases_version=$(cat include/version.mk | sed -n 's|.*releases/\([0-9]\+\.[0-9]\+\.[0-9]\+\).*|\1|p')
-url_value=$(wget -qO- "https://mirrors.ustc.edu.cn/openwrt/releases/${Releases_version}/targets/rockchip/armv8/kmods/")
+url_value=$(wget -qO- "https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/${Releases_version}/targets/rockchip/armv8/kmods/")
 hash_value=$(echo "$url_value" | sed -n 's/.*6\.6\.93-1-\([0-9a-f]\{32\}\)\/.*/\1/p' | head -1)
 hash_value=${hash_value:-$(echo "$url_value" | sed -n 's/.*\([0-9a-f]\{32\}\)\/.*/\1/p' | head -1)}
 if [ -n "$hash_value" ] && [[ "$hash_value" =~ ^[0-9a-f]{32}$ ]]; then

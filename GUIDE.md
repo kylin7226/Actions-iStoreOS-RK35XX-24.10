@@ -83,8 +83,8 @@ CONFIG_PACKAGE_luci-i18n-ddnsto-zh-cn=n
 在 `diy-part2-6.x.sh` 末尾添加 clone 语句：
 
 ```bash
-# 集成ddns-go
-git clone --depth=1 https://github.com/sirpdboy/luci-app-ddns-go package/ddns-go
+# 集成luci-app-aliddns
+git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo-packages
 ```
 
 > `--depth=1` 表示只拉最新的一个 commit，加快克隆速度。
@@ -92,7 +92,8 @@ git clone --depth=1 https://github.com/sirpdboy/luci-app-ddns-go package/ddns-go
 **第 2 步：在 `config_data-6.x.txt` 中启用**
 
 ```
-CONFIG_PACKAGE_luci-app-ddns-go=y
+CONFIG_PACKAGE_luci-app-aliddns=y
+CONFIG_PACKAGE_luci-i18n-aliddns-zh-cn=y
 ```
 
 > 如果该包有依赖（如 luci 界面、i18n 翻译），也需要一并启用。具体包名可查阅插件仓库的 README 或 Makefile。
@@ -110,13 +111,14 @@ CONFIG_PACKAGE_ddns-scripts_aliyun=n
 CONFIG_PACKAGE_luci-app-ddns=n
 CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=n
 
-# 添加新 ddns-go
-CONFIG_PACKAGE_luci-app-ddns-go=y
+# 添加新 aliddns
+CONFIG_PACKAGE_luci-app-aliddns=y
+CONFIG_PACKAGE_luci-i18n-aliddns-zh-cn=y
 ```
 
 ```bash
-# diy-part2-6.x.sh
-git clone --depth=1 https://github.com/sirpdboy/luci-app-ddns-go package/ddns-go
+# diy-part1-6.x.sh (通过 kenzo 源自动获取，无需手动 clone)
+# src-git kenzo https://github.com/kenzok8/openwrt-packages
 ```
 
 ### 2.4 批量删除同类包
@@ -144,7 +146,7 @@ grep 'ddns' armv8/.config
 
 | 包 | 来源 | 说明 |
 |---|---|---|
-| `luci-app-ddns-go` | sirpdboy/luci-app-ddns-go | 替换上游 ddns |
+| `luci-app-aliddns` | kenzok8/openwrt-packages | 阿里云DDNS动态域名 |
 | `luci-app-eqosplus` | sirpdboy/luci-app-eqosplus | 定时限速插件 |
 | `default-settings` | xiaomeng9597/istoreos-settings | iStoreOS 设置 |
 

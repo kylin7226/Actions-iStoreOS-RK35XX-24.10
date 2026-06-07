@@ -146,7 +146,9 @@ grep 'ddns' armv8/.config
 
 | 包 | 来源 | 说明 |
 |---|---|---|
-| `luci-app-aliddns` | kenzok8/openwrt-packages | 阿里云DDNS动态域名 |
+| `luci-app-ddns-go` | kenzok8/openwrt-packages | DDNS动态域名（含中文） |
+| `luci-app-clashoo` | kenzok8/small | Clash代理工具（含中文） |
+| `luci-app-homeproxy` | kenzok8/small | HomeProxy代理平台 |
 | `luci-app-eqosplus` | sirpdboy/luci-app-eqosplus | 定时限速插件 |
 | `default-settings` | xiaomeng9597/istoreos-settings | iStoreOS 设置 |
 
@@ -207,7 +209,7 @@ REPO_BRANCH:
 |---|---|
 | 目标设备 | 仅 `cyber_cyber3588-aib`，其他全部禁用 |
 | WiFi 相关 | 所有驱动（mt76/rtw/rtl/iwlwifi/brcmfmac）、固件、工具全部禁用 |
-| DDNS | 删除上游 ddns-scripts/ddnsto，替换为 luci-app-aliddns（阿里云DDNS） |
+| DDNS | 删除上游 ddns-scripts/ddnsto，恢复为 ddns-go |
 | OAF/Appfilter | 已禁用 |
 | 默认 IP | 192.168.199.1（原 192.168.100.1） |
 | uhttpd 端口 | :64880 / :64443（原 :80 / :443） |

@@ -83,8 +83,8 @@ CONFIG_PACKAGE_luci-i18n-ddnsto-zh-cn=n
 在 `diy-part2-6.x.sh` 末尾添加 clone 语句：
 
 ```bash
-# 集成luci-app-aliddns
-git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo-packages
+# 集成ddns-go（通过 kenzo 源自动获取，无需手动 clone）
+# src-git kenzo https://github.com/kenzok8/openwrt-packages
 ```
 
 > `--depth=1` 表示只拉最新的一个 commit，加快克隆速度。
@@ -92,8 +92,9 @@ git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo-pa
 **第 2 步：在 `config_data-6.x.txt` 中启用**
 
 ```
-CONFIG_PACKAGE_luci-app-aliddns=y
-CONFIG_PACKAGE_luci-i18n-aliddns-zh-cn=y
+CONFIG_PACKAGE_ddns-go=y
+CONFIG_PACKAGE_luci-app-ddns-go=y
+CONFIG_PACKAGE_luci-i18n-ddns-go-zh-cn=y
 ```
 
 > 如果该包有依赖（如 luci 界面、i18n 翻译），也需要一并启用。具体包名可查阅插件仓库的 README 或 Makefile。
@@ -111,9 +112,10 @@ CONFIG_PACKAGE_ddns-scripts_aliyun=n
 CONFIG_PACKAGE_luci-app-ddns=n
 CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=n
 
-# 添加新 aliddns
-CONFIG_PACKAGE_luci-app-aliddns=y
-CONFIG_PACKAGE_luci-i18n-aliddns-zh-cn=y
+# 添加新 ddns-go
+CONFIG_PACKAGE_ddns-go=y
+CONFIG_PACKAGE_luci-app-ddns-go=y
+CONFIG_PACKAGE_luci-i18n-ddns-go-zh-cn=y
 ```
 
 ```bash

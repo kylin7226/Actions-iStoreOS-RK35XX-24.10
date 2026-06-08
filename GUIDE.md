@@ -83,8 +83,8 @@ CONFIG_PACKAGE_luci-i18n-ddnsto-zh-cn=n
 在 `diy-part2-6.x.sh` 末尾添加 clone 语句：
 
 ```bash
-# 集成ddns-go（通过 kenzo 源自动获取，无需手动 clone）
-# src-git kenzo https://github.com/kenzok8/openwrt-packages
+# 集成homeproxy（通过 small 源自动获取，无需手动 clone）
+# src-git small https://github.com/kenzok8/small
 ```
 
 > `--depth=1` 表示只拉最新的一个 commit，加快克隆速度。
@@ -92,9 +92,9 @@ CONFIG_PACKAGE_luci-i18n-ddnsto-zh-cn=n
 **第 2 步：在 `config_data-6.x.txt` 中启用**
 
 ```
-CONFIG_PACKAGE_ddns-go=y
-CONFIG_PACKAGE_luci-app-ddns-go=y
-CONFIG_PACKAGE_luci-i18n-ddns-go-zh-cn=y
+CONFIG_PACKAGE_luci-app-homeproxy=y
+CONFIG_PACKAGE_sing-box=y
+CONFIG_PACKAGE_ucode-mod-digest=y
 ```
 
 > 如果该包有依赖（如 luci 界面、i18n 翻译），也需要一并启用。具体包名可查阅插件仓库的 README 或 Makefile。
@@ -112,10 +112,10 @@ CONFIG_PACKAGE_ddns-scripts_aliyun=n
 CONFIG_PACKAGE_luci-app-ddns=n
 CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=n
 
-# 添加新 ddns-go
-CONFIG_PACKAGE_ddns-go=y
-CONFIG_PACKAGE_luci-app-ddns-go=y
-CONFIG_PACKAGE_luci-i18n-ddns-go-zh-cn=y
+# 添加新 homeproxy
+CONFIG_PACKAGE_luci-app-homeproxy=y
+CONFIG_PACKAGE_sing-box=y
+CONFIG_PACKAGE_ucode-mod-digest=y
 ```
 
 ```bash
@@ -148,8 +148,6 @@ grep 'ddns' armv8/.config
 
 | 包 | 来源 | 说明 |
 |---|---|---|
-| `luci-app-ddns-go` | kenzok8/openwrt-packages | DDNS动态域名（含中文） |
-| `luci-app-clashoo` | kenzok8/small | Clash代理工具（含中文） |
 | `luci-app-homeproxy` | kenzok8/small | HomeProxy代理平台 |
 | `luci-app-eqosplus` | sirpdboy/luci-app-eqosplus | 定时限速插件 |
 | `default-settings` | xiaomeng9597/istoreos-settings | iStoreOS 设置 |
@@ -211,7 +209,7 @@ REPO_BRANCH:
 |---|---|
 | 目标设备 | 仅 `cyber_cyber3588-aib`，其他全部禁用 |
 | WiFi 相关 | 所有驱动（mt76/rtw/rtl/iwlwifi/brcmfmac）、固件、工具全部禁用 |
-| DDNS | 删除上游 ddns-scripts/ddnsto，恢复为 ddns-go |
+| DDNS | 删除上游 ddns-scripts/ddnsto |
 | OAF/Appfilter | 已禁用 |
 | 默认 IP | 192.168.199.1（原 192.168.100.1） |
 | uhttpd 端口 | :64880 / :64443（原 :80 / :443） |

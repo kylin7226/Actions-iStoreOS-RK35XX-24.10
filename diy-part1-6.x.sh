@@ -7,9 +7,23 @@
 # Blog: https://p3terx.com
 #===============================================
 
-# 添加 kenzo 和 small 源（kenzok8 推荐方式）
+# 添加 kenzo 和 small 源(kenzok8 推荐方式)
 sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+
+# 指定 sing-box 版本为 v1.13.3
+SING_BOX_VERSION="1.13.3"
+SING_BOX_HASH="bf8933cd43e2797afcffb47528282e1c1aee078bf5eeda888d80a151fef726e1"
+SING_BOX_PKG_PATH="feeds/small/sing-box"
+
+if [ -d "$SING_BOX_PKG_PATH" ]; then
+    # 修改 Makefile 中的版本号和 hash 值
+    sed -i "s/PKG_VERSION:=.*/PKG_VERSION:=${SING_BOX_VERSION}/" $SING_BOX_PKG_PATH/Makefile
+    sed -i "s/PKG_HASH:=.*/PKG_HASH:=${SING_BOX_HASH}/" $SING_BOX_PKG_PATH/Makefile
+    echo "sing-box 版本已指定为: v${SING_BOX_VERSION}"
+else
+    echo "警告: 未找到 sing-box 包路径，跳过版本指定"
+fi
 
 # 修复系统kernel内核md5校验码不正确的问题
 # https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/24.10.2/targets/rockchip/armv8/kmods/

@@ -140,6 +140,11 @@ jobs:
         rm -rf feeds/packages/utils/policycoreutils
         rm -rf feeds/diy/luci-app-ota
         rm -rf feeds/diy/ntfsprogs
+        # 删除编译失败的包
+        rm -rf feeds/linkease_nas/network/services/linkmount
+        rm -rf feeds/linkease_nas/luci-app-linkmount
+        # 注意: 保留 linux-firmware，某些硬件需要
+        # rm -rf package/firmware/linux-firmware
         # 保留 kenzo 的主题包（不删除）
         # rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-app-argon-config
         # rm -rf feeds/kenzo/luci-theme-glass feeds/kenzo/luci-theme-design

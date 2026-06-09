@@ -148,7 +148,6 @@ grep 'ddns' armv8/.config
 
 | 包 | 来源 | 说明 |
 |---|---|---|
-| `luci-theme-alpha` | kenzok8/openwrt-packages | Alpha 主题 |
 | `luci-theme-argon` | kenzok8/openwrt-packages | Argon 主题 |
 | `luci-app-argon-config` | kenzok8/openwrt-packages | Argon 主题配置（含中文） |
 | `luci-theme-glass` | kenzok8/openwrt-packages | Glass 透明主题 |

@@ -148,6 +148,12 @@ grep 'ddns' armv8/.config
 
 | 包 | 来源 | 说明 |
 |---|---|---|
+| `luci-theme-alpha` | kenzok8/openwrt-packages | Alpha 主题 |
+| `luci-theme-argon` | kenzok8/openwrt-packages | Argon 主题 |
+| `luci-app-argon-config` | kenzok8/openwrt-packages | Argon 主题配置（含中文） |
+| `luci-theme-glass` | kenzok8/openwrt-packages | Glass 透明主题 |
+| `luci-theme-design` | kenzok8/openwrt-packages | Design 主题 |
+| `luci-app-design-config` | kenzok8/openwrt-packages | Design 主题配置（含中文） |
 | `luci-app-homeproxy` | kenzok8/small | HomeProxy代理平台 |
 | `luci-app-eqosplus` | sirpdboy/luci-app-eqosplus | 定时限速插件 |
 | `default-settings` | xiaomeng9597/istoreos-settings | iStoreOS 设置 |

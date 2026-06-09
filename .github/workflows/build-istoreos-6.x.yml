@@ -129,11 +129,20 @@ jobs:
         git clone --depth=1 https://github.com/kenzok8/golang -b 1.25 feeds/packages/lang/golang
         # 删除依赖缺失的 feeds 包
         rm -rf feeds/third_party/luci-app-LingTiGameAcc feeds/third_party/LingTiGameAcc
-        rm -rf feeds/kenzo/luci-theme-alpha
+        # 保留 kenzo 的主题包（不删除）
+        # rm -rf feeds/kenzo/luci-theme-alpha
         rm -rf feeds/packages/net/onionshare-cli
         rm -rf feeds/packages/lang/python-pika feeds/packages/lang/python-zope-event feeds/packages/lang/python-zope-interface
         rm -rf feeds/kenzo/smartdns feeds/kenzo/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
         rm -rf feeds/kenzo/luci-app-fchomo feeds/kenzo/fchomo
+        # 删除有依赖问题的包（消除编译警告）
+        rm -rf feeds/packages/utils/audit
+        rm -rf feeds/packages/utils/policycoreutils
+        rm -rf feeds/diy/luci-app-ota
+        rm -rf feeds/diy/ntfsprogs
+        # 保留 kenzo 的主题包（不删除）
+        # rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-app-argon-config
+        # rm -rf feeds/kenzo/luci-theme-glass feeds/kenzo/luci-theme-design
 
     - name: 安装 feeds
       run: cd openwrt && ./scripts/feeds install -a

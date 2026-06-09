@@ -127,6 +127,9 @@ jobs:
         rm -rf feeds/packages/utils/v2dat feeds/packages/lang/golang
         # 替换为 kenzo 的 golang 1.25
         git clone --depth=1 https://github.com/kenzok8/golang -b 1.25 feeds/packages/lang/golang
+        # 删除 kenzo/small 中编译失败的包
+        rm -rf feeds/small/xray-core
+        rm -rf feeds/small/luci-app-xray
         # 删除依赖缺失的 feeds 包
         rm -rf feeds/third_party/luci-app-LingTiGameAcc feeds/third_party/LingTiGameAcc
         # 保留 kenzo 的主题包（不删除）
@@ -143,6 +146,9 @@ jobs:
         # 删除编译失败的包
         rm -rf feeds/linkease_nas/network/services/linkmount
         rm -rf feeds/linkease_nas/luci-app-linkmount
+        # 删除依赖 linkmount 的包（避免依赖警告）
+        rm -rf feeds/linkease_nas/linkease
+        rm -rf feeds/linkease_nas/luci-app-linkease
         # 注意: 保留 linux-firmware，某些硬件需要
         # rm -rf package/firmware/linux-firmware
         # 保留 kenzo 的主题包（不删除）

@@ -138,6 +138,9 @@ jobs:
         # 注意: 不能删除 iwinfo，rpcd 依赖它
         # rm -rf package/network/utils/iwinfo
         rm -rf package/kernel/rtl8812au-ct
+        # 删除依赖 mac80211 的包
+        rm -rf feeds/routing/batman-adv
+        rm -rf feeds/routing/batctl
         # 删除依赖缺失的 feeds 包
         rm -rf feeds/third_party/luci-app-LingTiGameAcc feeds/third_party/LingTiGameAcc
         # 保留 kenzo 的主题包（不删除）

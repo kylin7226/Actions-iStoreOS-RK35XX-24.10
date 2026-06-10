@@ -135,7 +135,8 @@ jobs:
         rm -rf package/network/services/hostapd
         rm -rf package/network/services/wpad
         rm -rf package/network/utils/iw
-        rm -rf package/network/utils/iwinfo
+        # 注意: 不能删除 iwinfo，rpcd 依赖它
+        # rm -rf package/network/utils/iwinfo
         rm -rf package/kernel/rtl8812au-ct
         # 删除依赖缺失的 feeds 包
         rm -rf feeds/third_party/luci-app-LingTiGameAcc feeds/third_party/LingTiGameAcc

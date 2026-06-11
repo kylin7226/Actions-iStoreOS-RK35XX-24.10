@@ -215,7 +215,9 @@ REPO_BRANCH:
 | 目标设备 | 仅 `cyber_cyber3588-aib`，其他全部禁用 |
 | WiFi 相关 | 所有驱动（mt76/rtw/rtl/iwlwifi/brcmfmac）、固件、工具全部禁用 |
 | DDNS | 删除上游 ddns-scripts/ddnsto |
-| OAF/Appfilter | 已禁用 |
+| OAF/Appfilter | 已启用（应用过滤/家长控制） |
+| NAS 相关 | 禁用 unishare/webdav2，保留 quickstart（网络配置工具） |
+| 主题包 | 仅保留 argon，禁用 glass/design/bootstrap |
 | 默认 IP | 192.168.199.1（原 192.168.100.1） |
 | uhttpd 端口 | :64880 / :64443（原 :80 / :443） |
 | 编译触发 | 手动触发（已移除定时任务） |
